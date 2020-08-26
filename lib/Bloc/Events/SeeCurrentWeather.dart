@@ -3,7 +3,7 @@ import 'package:weather/Models/Weather/WeatherModel.dart';
 import 'WeatherEvent.dart';
 
 class SeeCurrentWeather extends WeatherEvent {
-  final WeatherModel _currentWeather;
+  final _currentWeather;
 
   SeeCurrentWeather(this._currentWeather);
 
