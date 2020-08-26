@@ -1,4 +1,7 @@
 import 'package:bloc/bloc.dart';
+import 'package:weather/Bloc/Events/SeeCurrentWeather.dart';
+import 'package:weather/Bloc/Events/SeeListOfWeather.dart';
+import 'package:weather/Bloc/States/WeatherCurrent.dart';
 import 'package:weather/Models/Weather/WeatherModel.dart';
 import 'package:weather/Repositories/LocationRepository.dart';
 import 'package:weather/Repositories/WeatherRepository.dart';
@@ -18,7 +21,7 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
 
   @override
   Stream<WeatherState> mapEventToState(WeatherEvent event) async* {
-    if (event is FetchWeather) {
+    if (event is FetchWeather || event is SeeListOfWeather) {
       try {
         List<WeatherModel> weather = await this
             .weatherRepo
@@ -27,6 +30,10 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
       } catch (e) {
         yield WeatherIsNotLoaded();
       }
+    } else if (event is SeeCurrentWeather) {
+      List<WeatherModel> listOfOne = [];
+      listOfOne.add(event.props[0] as WeatherModel);
+      yield WeatherCurrent(listOfOne);
     }
   }
 }
