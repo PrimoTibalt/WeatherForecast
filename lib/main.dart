@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather/Bloc/Events/FetchWeather.dart';
 import 'package:weather/Bloc/States/WeatherCurrent.dart';
@@ -19,10 +20,15 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
     return MaterialApp(
         title: 'Flutter Weather',
         theme: ThemeData(
           primarySwatch: Colors.blue,
+          fontFamily: 'Brandon',
         ),
         home: Scaffold(
           resizeToAvoidBottomInset: false,
