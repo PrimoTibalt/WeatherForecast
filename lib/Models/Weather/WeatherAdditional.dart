@@ -11,6 +11,10 @@ class WeatherAdditional {
   WeatherAdditional(this.cloudsAll, this.windSpeed, this.windDeg,
       this.visibility, this.pop, this.rain3h, this.sysPod, this.dtTxt);
 
+  String get time {
+    return dtTxt.toString().substring(11, 16);
+  }
+
   factory WeatherAdditional.fromJson(Map<String, dynamic> json) {
     return WeatherAdditional(
       json['clouds']['all'],
