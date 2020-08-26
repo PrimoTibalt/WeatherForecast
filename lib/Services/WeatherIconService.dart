@@ -6,6 +6,28 @@ class WeatherIconService {
   WeatherIconService(this.weather);
 
   Image getIcon() {
+    String file = this._chooseFile(this.weather);
+
+    return Image.asset(
+      file,
+      scale: 1.0,
+      height: 80,
+      width: 80,
+    );
+  }
+
+  Image getLargeIcon() {
+    String file = this._chooseFile(this.weather);
+
+    return Image.asset(
+      file,
+      scale: 2.0,
+      height: 160,
+      width: 160,
+    );
+  }
+
+  String _chooseFile(String weather) {
     String file = '';
     if (weather == 'light rain' ||
         weather == 'shower rain' ||
@@ -46,11 +68,6 @@ class WeatherIconService {
       file = 'assets/icons/Weather/PNG/512/hotSummerSunUmbrellaWeather.png';
     }
 
-    return Image.asset(
-      file,
-      scale: 1.0,
-      height: 80,
-      width: 80,
-    );
+    return file;
   }
 }
