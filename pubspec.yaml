@@ -47,7 +47,28 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+  assets:
+    - assets/icons/Weather/PNG/512/cloudCloudyWeather.png
+    - assets/icons/Weather/PNG/512/cloudCloudyStormThunderWeather.png
+    - assets/icons/Weather/PNG/512/cloudCloudySunWeather.png
+    - assets/icons/Weather/PNG/512/cloudColdHeavySnowWeather.png
+    - assets/icons/Weather/PNG/512/cloudCrescentHalfMoonNightWeather.png
+    - assets/icons/Weather/PNG/512/cloudDrizzleRainWeather.png
+    - assets/icons/Weather/PNG/512/cloudFogWeather.png
+    - assets/icons/Weather/PNG/512/cloudHeavyRainWeather.png
+    - assets/icons/Weather/PNG/512/cloudRainWeather.png
+    - assets/icons/Weather/PNG/512/cloudSnowWeather(2).png
+    - assets/icons/Weather/PNG/512/cloudSnowWeather.png
+    - assets/icons/Weather/PNG/512/cloudSunSunnyWeather.png
+    - assets/icons/Weather/PNG/512/coldWeatherWinter.png
+    - assets/icons/Weather/PNG/512/heavyRainStormThunderWeather.png
+    - assets/icons/Weather/PNG/512/hotSummerSunUmbrellaWeather.png
+    - assets/icons/Weather/PNG/512/hotSunSunnyWeather.png
 
+  fonts:
+    - family: Brandon
+      fonts:
+        - asset: assets/fonts/Brandon.ttf
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg
