@@ -9,7 +9,7 @@ class WeatherPreciseData {
   final num humidity;
   final num tempKf;
 
-  num get celsiusTemp => (temp - 273.15).round();
+  String get celsiusTemp => (temp - 273.15).round().toString() + '°';
 
   WeatherPreciseData(this.temp, this.feelsLike, this.tempMin, this.tempMax,
       this.pressure, this.seaLevel, this.grndLevel, this.humidity, this.tempKf);
