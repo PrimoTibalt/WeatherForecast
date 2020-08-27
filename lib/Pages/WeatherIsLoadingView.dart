@@ -8,8 +8,9 @@ class WeatherIsLoadingView extends StatelessWidget {
   const WeatherIsLoadingView(this.bloc);
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     this.bloc.add(FetchWeather());
-    return Text('Is loading');
+    return Center(
+      child: Text('Wait, please...', style: TextStyle(fontSize: 30)),
+    );
   }
 }
