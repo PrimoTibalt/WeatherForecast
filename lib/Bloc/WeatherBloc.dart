@@ -27,7 +27,7 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
             .getWeather(await LocationRepo().getCurrentLocation());
         yield WeatherList(weather);
       } catch (e) {
-        yield WeatherIsNotLoaded();
+        yield WeatherIsNotLoaded(e.message);
       }
     } else if (event is SeeCurrentWeather) {
       List<WeatherModel> listOfOne = event.props[0] as List<WeatherModel>;
