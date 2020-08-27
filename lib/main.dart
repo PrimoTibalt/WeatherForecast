@@ -8,6 +8,7 @@ import 'package:weather/Bloc/States/WeatherIsLoading.dart';
 import 'package:weather/Bloc/States/WeatherIsNotLoaded.dart';
 import 'package:weather/Pages/WeatherCurrentView.dart';
 import 'package:weather/Pages/WeatherIsLoadingView.dart';
+import 'package:weather/Pages/WeatherNotLoadedView.dart';
 import 'package:weather/Repositories/WeatherRepository.dart';
 
 import 'Bloc/States/WeatherList.dart';
@@ -66,7 +67,7 @@ class Home extends StatelessWidget {
             _selectedIndex = 0;
             return WeatherCurrentView(state.getWeather);
           } else if (state is WeatherIsNotLoaded) {
-            throw UnimplementedError();
+            return WeatherNotLoadedView(state.error);
           } else {
             throw UnimplementedError('Unexpected state!');
           }
