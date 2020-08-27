@@ -6,7 +6,7 @@ class WeatherDayService {
   final List<WeatherModel> weather;
   final BuildContext context;
 
-  WeatherDayService(this.weather, this.context) {}
+  WeatherDayService(this.weather, this.context);
 
   List<Widget> separateByDays() {
     List<Widget> listOfColumn = [];
