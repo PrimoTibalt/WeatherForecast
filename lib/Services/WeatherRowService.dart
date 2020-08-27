@@ -18,7 +18,7 @@ class WeatherRowService {
         Container(
           child: (WeatherIconService(weather.general.description)).getIcon(),
           width: MediaQuery.of(context).size.width * 0.15,
-          padding: EdgeInsets.only(right: 10),
+          margin: EdgeInsets.only(right: 10),
         ),
         Container(
           child: Row(
