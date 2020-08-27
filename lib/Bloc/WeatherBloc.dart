@@ -30,8 +30,7 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
         yield WeatherIsNotLoaded();
       }
     } else if (event is SeeCurrentWeather) {
-      List<WeatherModel> listOfOne = [];
-      listOfOne.add(event.props[0] as WeatherModel);
+      List<WeatherModel> listOfOne = event.props[0] as List<WeatherModel>;
       yield WeatherCurrent(listOfOne);
     }
   }

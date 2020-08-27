@@ -3,7 +3,7 @@ import 'package:weather/Models/Weather/WeatherModel.dart';
 import 'package:weather/Services/WeatherIconService.dart';
 
 class WeatherCurrentView extends StatelessWidget {
-  final WeatherModel model;
+  final List<WeatherModel> model;
 
   const WeatherCurrentView(this.model);
   @override
@@ -17,8 +17,8 @@ class WeatherCurrentView extends StatelessWidget {
           children: [
             Container(
               alignment: Alignment.center,
-              child:
-                  WeatherIconService(model.general.description).getLargeIcon(),
+              child: WeatherIconService(model[0].general.description)
+                  .getLargeIcon(),
               width: MediaQuery.of(context).size.width,
               padding: EdgeInsets.only(top: 20),
             ),
@@ -26,7 +26,9 @@ class WeatherCurrentView extends StatelessWidget {
               children: [
                 Container(
                   child: Text(
-                      model.data.celsiusTemp + 'C | ' + model.general.weather,
+                      model[0].data.celsiusTemp +
+                          'C | ' +
+                          model[0].general.weather,
                       style: TextStyle(fontSize: 32, color: Colors.blue[700])),
                   decoration: BoxDecoration(
                       border:
@@ -45,14 +47,18 @@ class WeatherCurrentView extends StatelessWidget {
                         children: [
                           Container(
                             child: Column(children: [
-                              Text((this.model.data.humidity).toString() + '%',
+                              Text(
+                                  (this.model[0].data.humidity).toString() +
+                                      '%',
                                   style: TextStyle(fontSize: 18))
                             ]),
                             width: MediaQuery.of(context).size.width / 3 - 1,
                           ),
                           Container(
                             child: Column(children: [
-                              Text(this.model.data.pressure.toString() + ' hPa',
+                              Text(
+                                  this.model[0].data.pressure.toString() +
+                                      ' hPa',
                                   style: TextStyle(fontSize: 18)),
                             ]),
                             width: MediaQuery.of(context).size.width / 3 - 1,
@@ -60,7 +66,8 @@ class WeatherCurrentView extends StatelessWidget {
                           ),
                           Container(
                             child: Column(children: [
-                              Text(this.model.data.seaLevel.toString() + ' m',
+                              Text(
+                                  this.model[0].data.seaLevel.toString() + ' m',
                                   style: TextStyle(fontSize: 18))
                             ]),
                             width: MediaQuery.of(context).size.width / 3 - 1,
@@ -74,7 +81,11 @@ class WeatherCurrentView extends StatelessWidget {
                             child: Column(
                               children: [
                                 Text(
-                                    this.model.additional.windSpeed.toString() +
+                                    this
+                                            .model[0]
+                                            .additional
+                                            .windSpeed
+                                            .toString() +
                                         ' km/h',
                                     style: TextStyle(fontSize: 18))
                               ],
@@ -84,7 +95,7 @@ class WeatherCurrentView extends StatelessWidget {
                           Container(
                             child: Column(
                               children: [
-                                Text(this.model.additional.windDirection,
+                                Text(this.model[0].additional.windDirection,
                                     style: TextStyle(fontSize: 18))
                               ],
                             ),

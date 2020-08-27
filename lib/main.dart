@@ -64,7 +64,7 @@ class Home extends StatelessWidget {
             return WeatherListView(state.getWeather);
           } else if (state is WeatherCurrent) {
             _selectedIndex = 0;
-            return WeatherCurrentView(state.getWeather[0]);
+            return WeatherCurrentView(state.getWeather);
           } else if (state is WeatherIsNotLoaded) {
             throw UnimplementedError();
           } else {
@@ -89,11 +89,11 @@ class Home extends StatelessWidget {
             onTap: (index) {
               if (state is WeatherList) {
                 weatherBloc.add(index == 0
-                    ? SeeCurrentWeather(state.getWeather[0])
+                    ? SeeCurrentWeather(state.getWeather)
                     : SeeListOfWeather(state.getWeather));
               } else if (state is WeatherCurrent) {
                 weatherBloc.add(index == 0
-                    ? SeeCurrentWeather(state.getWeather[0])
+                    ? SeeCurrentWeather(state.getWeather)
                     : SeeListOfWeather(state.getWeather));
               }
               _selectedIndex = index;
