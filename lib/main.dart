@@ -60,8 +60,10 @@ class Home extends StatelessWidget {
           if (state is WeatherIsLoading) {
             return WeatherIsLoadingView(weatherBloc);
           } else if (state is WeatherList) {
+            _selectedIndex = 1;
             return WeatherListView(state.getWeather);
           } else if (state is WeatherCurrent) {
+            _selectedIndex = 0;
             return WeatherCurrentView(state.getWeather[0]);
           } else if (state is WeatherIsNotLoaded) {
             throw UnimplementedError();
