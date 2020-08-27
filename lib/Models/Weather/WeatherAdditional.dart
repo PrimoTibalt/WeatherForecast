@@ -15,6 +15,10 @@ class WeatherAdditional {
     return dtTxt.toString().substring(11, 16);
   }
 
+  String get date {
+    return dtTxt.toString().substring(0, 10);
+  }
+
   String get windDirection {
     return (windDeg > 337.5 || windDeg < 22.5)
         ? 'N'
