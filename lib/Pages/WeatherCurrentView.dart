@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
+
 import 'package:weather/Models/Weather/WeatherModel.dart';
+import 'package:weather/Services/Share/WeatherShareAsText.dart';
+import 'package:weather/Services/Share/WeatherShareService.dart';
 import 'package:weather/Services/WeatherIconService.dart';
 
 class WeatherCurrentView extends StatelessWidget {
   final List<WeatherModel> model;
+  WeatherShareService shareService;
+  WeatherModel first;
+  WeatherCurrentView(this.model) {
+    this.shareService = WeatherShareAsText(this.model);
+    first = this.model[0];
+  }
 
-  const WeatherCurrentView(this.model);
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -17,8 +25,8 @@ class WeatherCurrentView extends StatelessWidget {
           children: [
             Container(
               alignment: Alignment.center,
-              child: WeatherIconService(model[0].general.description)
-                  .getLargeIcon(),
+              child:
+                  WeatherIconService(first.general.description).getLargeIcon(),
               width: MediaQuery.of(context).size.width,
               padding: EdgeInsets.only(top: 20),
             ),
@@ -26,9 +34,7 @@ class WeatherCurrentView extends StatelessWidget {
               children: [
                 Container(
                   child: Text(
-                      model[0].data.celsiusTemp +
-                          'C | ' +
-                          model[0].general.weather,
+                      first.data.celsiusTemp + 'C | ' + first.general.weather,
                       style: TextStyle(fontSize: 32, color: Colors.blue[700])),
                   decoration: BoxDecoration(
                       border:
@@ -47,18 +53,14 @@ class WeatherCurrentView extends StatelessWidget {
                         children: [
                           Container(
                             child: Column(children: [
-                              Text(
-                                  (this.model[0].data.humidity).toString() +
-                                      '%',
+                              Text((this.first.data.humidity).toString() + '%',
                                   style: TextStyle(fontSize: 18))
                             ]),
                             width: MediaQuery.of(context).size.width / 3 - 1,
                           ),
                           Container(
                             child: Column(children: [
-                              Text(
-                                  this.model[0].data.pressure.toString() +
-                                      ' hPa',
+                              Text(this.first.data.pressure.toString() + ' hPa',
                                   style: TextStyle(fontSize: 18)),
                             ]),
                             width: MediaQuery.of(context).size.width / 3 - 1,
@@ -66,8 +68,7 @@ class WeatherCurrentView extends StatelessWidget {
                           ),
                           Container(
                             child: Column(children: [
-                              Text(
-                                  this.model[0].data.seaLevel.toString() + ' m',
+                              Text(this.first.data.seaLevel.toString() + ' m',
                                   style: TextStyle(fontSize: 18))
                             ]),
                             width: MediaQuery.of(context).size.width / 3 - 1,
@@ -81,11 +82,7 @@ class WeatherCurrentView extends StatelessWidget {
                             child: Column(
                               children: [
                                 Text(
-                                    this
-                                            .model[0]
-                                            .additional
-                                            .windSpeed
-                                            .toString() +
+                                    this.first.additional.windSpeed.toString() +
                                         ' km/h',
                                     style: TextStyle(fontSize: 18))
                               ],
@@ -95,7 +92,7 @@ class WeatherCurrentView extends StatelessWidget {
                           Container(
                             child: Column(
                               children: [
-                                Text(this.model[0].additional.windDirection,
+                                Text(this.first.additional.windDirection,
                                     style: TextStyle(fontSize: 18))
                               ],
                             ),
@@ -123,7 +120,7 @@ class WeatherCurrentView extends StatelessWidget {
                   child: Text('Share',
                       style: TextStyle(color: Colors.blue, fontSize: 24)),
                   onPressed: () {
-                    // TODO: Implement sharing
+                    this.shareService.share();
                   },
                 ))
           ],
