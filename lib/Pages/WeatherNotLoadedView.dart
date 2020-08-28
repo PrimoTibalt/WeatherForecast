@@ -21,6 +21,7 @@ class WeatherNotLoadedView extends StatelessWidget {
           Container(
             child: Text(WeatherErrorMessageService.beutifulVersion(error),
                 style: TextStyle(fontSize: 30, color: Colors.black87)),
+            alignment: Alignment.center,
           )
         ],
       ),
