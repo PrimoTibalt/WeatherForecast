@@ -70,7 +70,8 @@ flutter:
     - assets/icons/Weather/PNG/512/heavyRainStormThunderWeather.png
     - assets/icons/Weather/PNG/512/hotSummerSunUmbrellaWeather.png
     - assets/icons/Weather/PNG/512/hotSunSunnyWeather.png
-
+    - android/app/src/main/res/drawable/splashscreen.png
+    
   fonts:
     - family: Brandon
       fonts:
